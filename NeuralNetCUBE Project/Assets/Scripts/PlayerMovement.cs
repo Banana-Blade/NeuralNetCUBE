@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 
     // This is a reference to the Rigidbody component called "rb"
     public Rigidbody rb;
+    public Transform ground;
+    public Transform player;
 
     public float forwardForce = 2000f;  // Variable that determines the forward force
     public float sidewaysForce = 500f;  // Variable that determines the sideways force
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
-        if (rb.position.y < -1f) // better check sides?!
+        if ( Mathf.Abs(player.position.x - ground.position.x)>=  0.5f * (player.lossyScale.x + ground.lossyScale.x) )
         {
             FindObjectOfType<GameManager>().EndGame();
         }
