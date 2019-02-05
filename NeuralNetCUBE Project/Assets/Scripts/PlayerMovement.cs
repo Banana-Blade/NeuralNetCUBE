@@ -8,15 +8,21 @@ public class PlayerMovement : MonoBehaviour
     public Transform ground;
     public Transform player;
 
-    public float forwardForce = 2000f;  // Variable that determines the forward force
-    public float sidewaysForce = 500f;  // Variable that determines the sideways force
+    public float forwardForce = 40f;  // Variable that determines the forward force
+    public float sidewaysForce = 50f;  // Variable that determines the sideways force
+
+    void Start()
+    {
+        rb.velocity = new Vector3(0, 0, 33.8f);
+    }
 
     // We marked this as "Fixed"Update because we
     // are using it to mess with physics.
     void FixedUpdate()
     {
+        // Debug.Log(rb.velocity);
         // Add a forward force
-        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        rb.AddForce(0, 0, forwardForce * Time.deltaTime, ForceMode.VelocityChange);
 
         if (Input.GetKey("d") || Input.GetKey("right"))  // If the player is pressing the "d" or rightarrow key
         {
@@ -34,5 +40,6 @@ public class PlayerMovement : MonoBehaviour
         {
             FindObjectOfType<GameManager>().EndGame();
         }
+
     }
 }

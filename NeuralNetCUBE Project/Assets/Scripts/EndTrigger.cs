@@ -5,11 +5,13 @@ public class EndTrigger : MonoBehaviour
 
     public GameManager gameManager;
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        // eventually ask which Object it was!
-        Debug.Log("END Trigger hit!");
-        gameManager.CompleteLevel();
+        if (other.tag == "Player")
+        {
+            Debug.Log("END Trigger hit!");
+            gameManager.CompleteLevel();
+        }
     }
 
 }
