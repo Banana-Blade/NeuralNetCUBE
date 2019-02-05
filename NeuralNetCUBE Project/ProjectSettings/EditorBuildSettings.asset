@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/HumanPlayerLevel.unity
+    guid: 4b54304b020c0a74583759a097e5926a
   m_configObjects: {}

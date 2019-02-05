@@ -16,16 +16,21 @@ public class PlayerMovement : MonoBehaviour
         // Add a forward force
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-        if (Input.GetKey("d") || Input.GetKey("right"))  // If the player is pressing the "d" key
+        if (Input.GetKey("d") || Input.GetKey("right"))  // If the player is pressing the "d" or rightarrow key
         {
             // Add a force to the right
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
-        if (Input.GetKey("a") || Input.GetKey("left"))  // If the player is pressing the "a" key
+        if (Input.GetKey("a") || Input.GetKey("left"))  // If the player is pressing the "a" or leftarrow key
         {
             // Add a force to the left
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        }
+
+        if (rb.position.y < -1f) // better check sides?!
+        {
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
