@@ -10,6 +10,10 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = player.position.z.ToString("0");
+        scoreText.text = (player.position.z / 10f).ToString("0") + "%";
+        if(player.position.z>=1000)
+        {
+            scoreText.text = "100%";
+        }
     }
 }
