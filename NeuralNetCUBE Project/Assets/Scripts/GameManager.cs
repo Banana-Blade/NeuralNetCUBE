@@ -3,8 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [Range(0,1)]
+    [Range(0f,1f)]
     public float difficulty = 0.5f;
+
     bool gameHasEnded = false;
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
