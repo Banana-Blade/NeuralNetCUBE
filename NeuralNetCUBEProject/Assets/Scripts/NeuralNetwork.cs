@@ -2,6 +2,7 @@
 
 public class NeuralNetwork : MonoBehaviour
 {
+    // Set values in Inspector or at runtime! These are just first guesses while implementing.
     public int inputNeurons = 11;
     public int hiddenNeurons = 9;
     public int outputNeurons = 2;
@@ -36,7 +37,7 @@ public class NeuralNetwork : MonoBehaviour
         biasHidden = new Matrix(1, hiddenNeurons);
         biasOutput = new Matrix(1, outputNeurons);
 
-        // better in (-0.5,0.5) or (-0.3,0.3)?
+        // better in (-0.5,0.5) or (-0.3,0.3)?!
         weightsInputHidden.Randomize(-1,1);
         weightsHiddenOutput.Randomize(-1, 1);
         biasHidden.Randomize(-1, 1);
@@ -60,6 +61,7 @@ public class NeuralNetwork : MonoBehaviour
 
     public void Backpropagation(Matrix input, Matrix target)
     {
+        // like feedforward above
         Matrix hidden = Matrix.Addition(Matrix.MatrixMultiplication(input, weightsInputHidden), biasHidden);
         hidden.UseActivationFunction();
         Matrix output = Matrix.Addition(Matrix.MatrixMultiplication(hidden, weightsHiddenOutput), biasOutput);
