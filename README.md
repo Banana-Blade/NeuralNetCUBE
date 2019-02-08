@@ -5,4 +5,6 @@ Das zugrunde liegende Spiel basiert auf einem Online-Tutorial von Brackeys.
 
 
 Interessante Skripte/Files für das Neuronale Netz:
-- TODO
+- NeuralNetwork.cs
+- Matrix.cs
+- PlayerMovement.cs
