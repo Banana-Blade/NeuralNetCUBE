@@ -9,12 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: e21f7c701bbaa11458d824fb30503b22
   - enabled: 1
+    path: Assets/Scenes/TrainOrTest.unity
+    guid: 4692bd8033da7ff4db82e9bdbebd67cd
+  - enabled: 1
     path: Assets/Scenes/HumanPlayerLevel.unity
     guid: 4b54304b020c0a74583759a097e5926a
-  - enabled: 1
-    path: Assets/Scenes/NeuralNetworkLevel.unity
-    guid: b265e6e887974c644836358724cca59c
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 307a3a9d187c4e34cb9f295a2c372de2
   m_configObjects: {}

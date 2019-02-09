@@ -7,6 +7,9 @@ public class NeuralNetwork : MonoBehaviour
     public int hiddenNeurons = 9;
     public int outputNeurons = 2;
 
+    public float randomizeMin = -1.0f;
+    public float randomizeMax = 1.0f;
+
     public Matrix weightsInputHidden;
     public Matrix weightsHiddenOutput;
     public Matrix biasHidden;
@@ -14,6 +17,9 @@ public class NeuralNetwork : MonoBehaviour
 
     [Range(0,1)]
     public float learningRate = 0.9f;
+
+    [Range(0, 1)]
+    public float difficulty = 0.5f;
 
     // So that there is only one NN in the scene and will never be overwritten!
     public static NeuralNetwork instance;
@@ -30,7 +36,7 @@ public class NeuralNetwork : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    public void BuildNN()
     {
         weightsInputHidden = new Matrix(inputNeurons, hiddenNeurons);
         weightsHiddenOutput = new Matrix(hiddenNeurons, outputNeurons);
@@ -38,10 +44,10 @@ public class NeuralNetwork : MonoBehaviour
         biasOutput = new Matrix(1, outputNeurons);
 
         // better in (-0.5,0.5) or (-0.3,0.3)?!
-        weightsInputHidden.Randomize(-1,1);
-        weightsHiddenOutput.Randomize(-1, 1);
-        biasHidden.Randomize(-1, 1);
-        biasOutput.Randomize(-1, 1);
+        weightsInputHidden.Randomize(randomizeMin, randomizeMax);
+        weightsHiddenOutput.Randomize(randomizeMin, randomizeMax);
+        biasHidden.Randomize(randomizeMin, randomizeMax);
+        biasOutput.Randomize(randomizeMin, randomizeMax);
     }
 
     public Matrix Feedforward(Matrix input)
@@ -59,7 +65,7 @@ public class NeuralNetwork : MonoBehaviour
         return output;
     }
 
-    public void Backpropagation(Matrix input, Matrix target)
+    public float Backpropagation(Matrix input, Matrix target)
     {
         // like feedforward above
         Matrix hidden = Matrix.Addition(Matrix.MatrixMultiplication(input, weightsInputHidden), biasHidden);
@@ -95,5 +101,13 @@ public class NeuralNetwork : MonoBehaviour
         temp6.ScalarMultiplication(learningRate);
         biasOutput = Matrix.Addition(biasOutput, temp5);
         biasHidden = Matrix.Addition(biasHidden, temp6);
+
+        // return Error: 0.5*sum(t-o) which is not really the Errorfunction, because weights are already updated in between!
+        float error = 0;
+        for(int i = 0; i < temp1.Cols; i++)
+        {
+            error += temp1[0, i] * temp1[0, i];
+        }
+        return 0.5f * error;
     }
 }
