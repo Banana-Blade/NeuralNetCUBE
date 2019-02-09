@@ -9,6 +9,7 @@ Das zugrunde liegende Spiel basiert auf einem Online-Tutorial von Brackeys, die 
   * [NeuralNetwork.cs](NeuralNetCUBEProject/Assets/Scripts/NeuralNetwork.cs)
   * [Matrix.cs](NeuralNetCUBEProject/Assets/Scripts/Matrix.cs)
   * [PlayerMovement.cs](NeuralNetCUBEProject/Assets/Scripts/PlayerMovement.cs)
+  * [LevelComplete.cs](NeuralNetCUBE/NeuralNetCUBEProject/Assets/Scripts/LevelComplete.cs)
 
 ---
 
