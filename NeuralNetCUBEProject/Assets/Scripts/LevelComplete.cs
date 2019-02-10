@@ -12,6 +12,7 @@ public class LevelComplete : MonoBehaviour
     public GameObject trainingScreen;
     public Data data;
     public NeuralNetwork NN;
+    public int epochs = 1;
 
     public void LoadNextLevel()
     {
@@ -42,14 +43,32 @@ public class LevelComplete : MonoBehaviour
     IEnumerator Train()
     {
         yield return null;
-        float totalError = 0;
-        foreach(Matrix[] piece in data.list)
-        {
-            // Debug.Log(NN.Backpropagation(piece[0], piece[1]));
-            totalError += NN.Backpropagation(piece[0], piece[1]);
-        }
-        Debug.Log(totalError / data.list.Count);
 
+        for (int i = 0; i < epochs; i++)
+        {
+            // Make sure, training data is always shuffled!
+            data.Shuffle();
+            float totalError = 0;
+            foreach (Matrix[] piece in data.list)
+            {
+                // Debug.Log("Error for one piece: " + NN.Backpropagation(piece[0], piece[1]));
+                totalError += NN.Backpropagation(piece[0], piece[1]);
+            }
+            Debug.Log("Anzahl Daten: " + data.list.Count);
+            Debug.Log("Mean Error: " + totalError / data.list.Count);
+        }
+
+        int correct = 0;
+        foreach (Matrix[] piece in data.list)
+        {
+            Matrix output = NN.Feedforward(piece[0]);
+            if (output[0, 0] == piece[1][0, 0] && output[0, 1] == piece[1][0, 1])
+            {
+                correct++;
+            }
+        }
+        Debug.Log("Correct classified: " + (correct * 100f) / data.list.Count + "%");
+        
         trainingStage.SetActive(true);
         trainingScreen.SetActive(false);
     }

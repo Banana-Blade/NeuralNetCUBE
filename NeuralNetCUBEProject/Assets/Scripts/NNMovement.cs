@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class NNMovement : MonoBehaviour
 {
 
     // This is a reference to the Rigidbody component called "rb"
@@ -11,22 +11,24 @@ public class PlayerMovement : MonoBehaviour
     public float forwardForce = 40f;  // Variable that determines the forward force
     public float sidewaysForce = 50f;  // Variable that determines the sideways force
 
-    public Data data;
     public GameManager manager;
+    public NeuralNetwork NN;
+
+    public GameObject rightArrow;
+    public GameObject leftArrow;
 
     void Start()
     {
         rb.velocity = new Vector3(0, 0, 33.8f);
+        NN = FindObjectOfType<NeuralNetwork>();
     }
 
     // We marked this as "Fixed"Update because we
     // are using it to mess with physics.
     void FixedUpdate()
     {
-        Matrix[] userData = new Matrix[2];
         Matrix measureValues = new Matrix(1, 11);
-        Matrix userDecisions = new Matrix(1, 2);
-
+        
         // Position Left Right in [-8.5,8.5] -> map to [0,1]
         // Debug.Log(player.position.x);
         // Debug.Log(MapTo01(player.position.x, -8.5f, 8.5f));
@@ -44,50 +46,47 @@ public class PlayerMovement : MonoBehaviour
 
         // Obstacles next
         // Debug.Log(Mathf.FloorToInt(player.position.z / 50));
-        for(int i = 3; i<=10; i++)
+        for (int i = 3; i <= 10; i++)
         {
-            measureValues[0, i] = manager.boolObstacles[Mathf.FloorToInt(player.position.z / 50), i-3] ? 1f: 0f;
+            measureValues[0, i] = manager.boolObstacles[Mathf.FloorToInt(player.position.z / 50), i - 3] ? 1f : 0f;
         }
-        
+
+        Matrix networkDecisions = NN.Feedforward(measureValues);
+
         // Debug.Log(rb.velocity);
         // Add a forward force
         rb.AddForce(0, 0, forwardForce * Time.deltaTime, ForceMode.VelocityChange);
 
-        if (Input.GetKey("d") || Input.GetKey("right"))  // If the player is pressing the "d" or rightarrow key
+        if (networkDecisions[0,1] == 1.0f)  // If the network wants to press the "d" or rightarrow key
         {
             // Add a force to the right
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            userDecisions[0,1] = 1;
-        } else
-        {
-            userDecisions[0, 1] = 0;
-        }
-
-        if (Input.GetKey("a") || Input.GetKey("left"))  // If the player is pressing the "a" or leftarrow key
-        {
-            // Add a force to the left
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            userDecisions[0, 0] = 1;
+            rightArrow.SetActive(true);
         }
         else
         {
-            userDecisions[0, 0] = 0;
+            rightArrow.SetActive(false);
         }
 
-        if ( Mathf.Abs(player.position.x - ground.position.x)>=  0.5f * (player.lossyScale.x + ground.lossyScale.x) )
+        if (networkDecisions[0, 0] == 1.0f)  // If the network wants to press the "a" or leftarrow key
+        {
+            // Add a force to the left
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            leftArrow.SetActive(true);
+        }
+        else
+        {
+            leftArrow.SetActive(false);
+        }
+
+        if (Mathf.Abs(player.position.x - ground.position.x) >= 0.5f * (player.lossyScale.x + ground.lossyScale.x))
         {
             FindObjectOfType<GameManager>().EndGame();
         }
-
-        userData[0] = measureValues;
-        userData[1] = userDecisions;
-        // userData[0].Print(); // works fine!!!
-        // userData[1].Print(); // works fine!!!
-        data.list.Add(userData);
     }
 
     // mapping val linearly from [minIs,maxIs] to [minShould,maxShould]
-    private float Map (float val, float minIs, float maxIs, float minShould, float maxShould)
+    private float Map(float val, float minIs, float maxIs, float minShould, float maxShould)
     {
         return ((val - minIs) / (maxIs - minIs)) * (maxShould - minShould) + minShould;
     }

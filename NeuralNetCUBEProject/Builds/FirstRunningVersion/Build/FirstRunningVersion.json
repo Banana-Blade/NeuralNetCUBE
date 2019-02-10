@@ -1,0 +1,13 @@
+{
+"companyName": "Jonas",
+"productName": "NeuralNetCUBE",
+"dataUrl": "FirstRunningVersion.data.unityweb",
+"wasmCodeUrl": "FirstRunningVersion.wasm.code.unityweb",
+"wasmFrameworkUrl": "FirstRunningVersion.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Light",
+"backgroundColor": "#CFCFCF",
+"cacheControl": {"default": "must-revalidate"}
+}

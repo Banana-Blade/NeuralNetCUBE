@@ -61,7 +61,25 @@ public class NeuralNetwork : MonoBehaviour
         Matrix output = Matrix.Addition(Matrix.MatrixMultiplication(hidden, weightsHiddenOutput), biasOutput);
         // f(net)
         output.UseActivationFunction();
-        
+
+        // Treshold function
+        if (output[0, 0] >= 0.5f)
+        {
+            output[0, 0] = 1.0f;
+        } else
+        {
+            output[0, 0] = 0.0f;
+        }
+
+        if (output[0, 1] >= 0.5f)
+        {
+            output[0, 1] = 1.0f;
+        }
+        else
+        {
+            output[0, 1] = 0.0f;
+        }
+
         return output;
     }
 
@@ -108,6 +126,9 @@ public class NeuralNetwork : MonoBehaviour
         {
             error += temp1[0, i] * temp1[0, i];
         }
-        return 0.5f * error;
+        // input.Print();
+        // target.Print();
+        // Debug.Log(error);
+        return error; // should be in [0,2]
     }
 }

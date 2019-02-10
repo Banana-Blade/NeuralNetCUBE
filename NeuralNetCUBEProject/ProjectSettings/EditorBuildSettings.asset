@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HumanPlayerLevel.unity
     guid: 4b54304b020c0a74583759a097e5926a
+  - enabled: 1
+    path: Assets/Scenes/NeuralNetLevel.unity
+    guid: fe91ea96fa49bdf4c919ebd4e8ec839e
   m_configObjects: {}

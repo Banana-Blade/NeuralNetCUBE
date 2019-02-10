@@ -10,4 +10,18 @@ public class Data : MonoBehaviour
     {
         list = new List<Matrix[]>();
     }
+
+    public void Shuffle()
+    {
+        // Fisher–Yates shuffle
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            Matrix[] value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
 }
