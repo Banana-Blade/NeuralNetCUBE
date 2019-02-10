@@ -56,6 +56,8 @@ public class LevelComplete : MonoBehaviour
             }
             Debug.Log("Anzahl Daten: " + data.list.Count);
             Debug.Log("Mean Error: " + totalError / data.list.Count);
+            Debug.Log("Epoche: " + (i + 1));
+            yield return null;
         }
 
         int correct = 0;

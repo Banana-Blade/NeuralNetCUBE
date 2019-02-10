@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.9058824, g: 0.9058824, b: 0.9058824, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.02
+  m_FogDensity: 0.035
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -6070,6 +6070,7 @@ MonoBehaviour:
   trainingScreen: {fileID: 2011462739}
   data: {fileID: 1835603342}
   NN: {fileID: 0}
+  epochs: 1
 --- !u!95 &757144312
 Animator:
   serializedVersion: 3
