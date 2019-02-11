@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb.velocity = new Vector3(0, 0, 33.8f);
+        data = FindObjectOfType<Data>();
     }
 
     // We marked this as "Fixed"Update because we
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         userData[1] = userDecisions;
         // userData[0].Print(); // works fine!!!
         // userData[1].Print(); // works fine!!!
-        data.list.Add(userData);
+        data.newData.Add(userData);
     }
 
     // mapping val linearly from [minIs,maxIs] to [minShould,maxShould]

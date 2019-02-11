@@ -9,7 +9,6 @@ public class LevelComplete : MonoBehaviour
     public GameObject complete;
     public GameObject goodJob;
     public GameObject trainingStage;
-    public GameObject trainingScreen;
     public Data data;
     public NeuralNetwork NN;
     public int epochs = 1;
@@ -26,6 +25,7 @@ public class LevelComplete : MonoBehaviour
         goodJob.SetActive(false);
         trainingStage.SetActive(true);
         NN = FindObjectOfType<NeuralNetwork>();
+        data = FindObjectOfType<Data>();
     }
 
     public void Finished()
@@ -35,8 +35,6 @@ public class LevelComplete : MonoBehaviour
 
     public void StartTraining()
     {
-        trainingStage.SetActive(false);
-        trainingScreen.SetActive(true);
         StartCoroutine("Train");
     }
 
@@ -44,6 +42,7 @@ public class LevelComplete : MonoBehaviour
     {
         yield return null;
 
+        //TODO Move Epochs somewhere else?
         for (int i = 0; i < epochs; i++)
         {
             // Make sure, training data is always shuffled!
@@ -71,7 +70,7 @@ public class LevelComplete : MonoBehaviour
         }
         Debug.Log("Correct classified: " + (correct * 100f) / data.list.Count + "%");
         
-        trainingStage.SetActive(true);
-        trainingScreen.SetActive(false);
+        // TODO Update UI
+        // trainingStage.SetActive(true);
     }
 }

@@ -17,6 +17,8 @@ public class NeuralNetwork : MonoBehaviour
 
     [Range(0,1)]
     public float learningRate = 0.9f;
+    public int epochs = 10;
+    public int batchsize = 1;
 
     [Range(0, 1)]
     public float difficulty = 0.5f;
@@ -62,7 +64,7 @@ public class NeuralNetwork : MonoBehaviour
         // f(net)
         output.UseActivationFunction();
 
-        // Treshold function
+        // Threshold function
         if (output[0, 0] >= 0.5f)
         {
             output[0, 0] = 1.0f;
