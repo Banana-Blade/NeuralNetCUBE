@@ -27,17 +27,19 @@ public class NNMovement : MonoBehaviour
     // are using it to mess with physics.
     void FixedUpdate()
     {
-        Matrix measureValues = new Matrix(1, 11);
-        
+        Matrix measureValues = new Matrix(1, NN.inputNeurons);
+
         // Position Left Right in [-8.5,8.5] -> map to [0,1]
         // Debug.Log(player.position.x);
         // Debug.Log(MapTo01(player.position.x, -8.5f, 8.5f));
-        measureValues[0, 0] = MapTo01(player.position.x, -7.5f, 7.5f); // changed!
+        // measureValues[0, 0] = MapTo01(player.position.x, -7.5f, 7.5f); // changed!
+        measureValues[0, 0] = MapWithSigmoid(0.5f, player.position.x);
 
         // Velocity Left Right in [-25,25] -> map to [0,1]
         // Debug.Log(rb.velocity.x);
         // Debug.Log(MapTo01(rb.velocity.x, -25f, 25f));
-        measureValues[0, 1] = MapTo01(rb.velocity.x, -10f, 10f); // changed!
+        // measureValues[0, 1] = MapTo01(rb.velocity.x, -10f, 10f); // changed!
+        measureValues[0, 1] = MapWithSigmoid(0.18f, rb.velocity.x);
 
         // Distance Front in [0,50] -> map to [0,1]
         // Debug.Log(50 - (player.position.z % 50));
@@ -46,7 +48,7 @@ public class NNMovement : MonoBehaviour
 
         // Obstacles next
         // Debug.Log(Mathf.FloorToInt(player.position.z / 50));
-        for (int i = 3; i <= 10; i++)
+        for (int i = 3; i <= (NN.inputNeurons-1); i++)
         {
             measureValues[0, i] = manager.boolObstacles[Mathf.FloorToInt(player.position.z / 50), i - 3] ? 1f : 0f;
         }
@@ -83,6 +85,8 @@ public class NNMovement : MonoBehaviour
         {
             FindObjectOfType<GameManager>().EndGame();
         }
+
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 33.8f);
     }
 
     // mapping val linearly from [minIs,maxIs] to [minShould,maxShould]
@@ -95,5 +99,10 @@ public class NNMovement : MonoBehaviour
     private float MapTo01(float val, float minIs, float maxIs)
     {
         return Mathf.Clamp01(((val - minIs) / (maxIs - minIs)));
+    }
+
+    private float MapWithSigmoid(float a, float val)
+    {
+        return 1.0f / (1.0f + Mathf.Exp(-a * val));
     }
 }

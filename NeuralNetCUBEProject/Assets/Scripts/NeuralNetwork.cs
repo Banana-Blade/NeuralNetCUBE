@@ -3,7 +3,7 @@
 public class NeuralNetwork : MonoBehaviour
 {
     // Set values in Inspector or at runtime! These are just first guesses while implementing.
-    public int inputNeurons = 11;
+    public int inputNeurons = 7;
     public int hiddenNeurons = 9;
     public int outputNeurons = 2;
 

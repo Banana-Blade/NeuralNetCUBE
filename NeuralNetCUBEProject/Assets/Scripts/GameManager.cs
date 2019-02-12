@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour
     void Start() // initialize all Obstacles randomly with repect to the difficulty
     {
         float dif = 0.5f;
-        if(FindObjectOfType<NeuralNetwork>() != null)
+        NeuralNetwork NN = FindObjectOfType<NeuralNetwork>();
+        if (NN != null)
         {
-            dif = FindObjectOfType<NeuralNetwork>().difficulty;
+            dif = NN.difficulty;
         }
-        boolObstacles = new bool[20,8];
+        int obstaclePerRow = (NN.inputNeurons - 3); // change this if there are more other input values!
+        boolObstacles = new bool[20, obstaclePerRow];
         for(int i = 0; i < boolObstacles.GetLength(0); i++)
         {
             for(int j = 0; j < boolObstacles.GetLength(1); j++)
@@ -30,17 +32,17 @@ public class GameManager : MonoBehaviour
                 boolObstacles[i,j] = (Random.value <= dif);
             }
             // at least one place has to be free!
-            boolObstacles[i, Random.Range(0, 8)] = false;
+            boolObstacles[i, Random.Range(0, obstaclePerRow)] = false;
         }
         // last obstacles missing (END)
-        for(int k = 0; k < boolObstacles.GetLength(1); k++)
-        {
-            boolObstacles[19, k] = false;
-        }
+        //for(int k = 0; k < boolObstacles.GetLength(1); k++)
+        //{
+        //    boolObstacles[19, k] = false;
+        //}
         
         for (int i = 0; i < realObstacles.Length; i++)
         {
-            realObstacles[i].SetActive(boolObstacles[Mathf.FloorToInt(i / 8), i % 8]);
+            realObstacles[i].SetActive(boolObstacles[Mathf.FloorToInt(i / obstaclePerRow), i % obstaclePerRow]);
         }
     }
 
