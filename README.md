@@ -8,7 +8,7 @@ Das zugrunde liegende Spiel basiert auf einem Online-Tutorial von Brackeys, die 
 ***
 
 *Interessante Skripte/Files für das Neuronale Netz:*
-  * [NeuralNetwork.cs](NeuralNetCUBEProject/Assets/Scripts/NeuralNetwork.cs): Ein dreischichtiges Neuronales Netz mit Feedforward, Backpropagation und Möglichkeit auf Batchlernen - zum tiefgreifenderen Verständnis der Grundlagen mittels einfacher Matrizenrechnung anhand der Formeln der Uni Regensburg "von Hand geschrieben" (Biases von mir ergänzt)
+  * [NeuralNetwork.cs](NeuralNetCUBEProject/Assets/Scripts/NeuralNetwork.cs): Ein dreischichtiges Neuronales Netz mit Feedforward, Backpropagation und Möglichkeit auf Batchlernen - zum tiefgreifenderen Verständnis der Grundlagen mittels einfacher Matrizenrechnung anhand der Formeln der Uni Regensburg (Biases von mir ergänzt) "von Hand" geschrieben, d.h. ohne Nutzung von Bibliotheken wie tensorflow 
   * [Matrix.cs](NeuralNetCUBEProject/Assets/Scripts/Matrix.cs): Für typische Matrizenoperatoren sowie für die Aktivierungsfunktion samt Ableitung
   * [PlayerMovement.cs](NeuralNetCUBEProject/Assets/Scripts/PlayerMovement.cs): Zur Generierung von Daten während der Nutzer spielt - in jedem Frame werden gespeichert: Position des Spielers (links/rechts), Geschwindigkeit des Spielers (in Richtung links/rechts), Entfernung zur nächsten Reihe von Hinternissen, An-/Abwesenheit bzw. Position der nächsten Hindernisse, Tastendruck des Nutzers (links/rechts)
   * [NNMovements.cs](NeuralNetCUBEProject/Assets/Scripts/NNMovement.cs): Zum Erfassen der Situation zur Laufzeit und Entscheidungsfindung durch Feedforward
