@@ -23,7 +23,7 @@ Am Laptop oder Desktop PC kann man das Projekt [hier](http://www-stud.uni-due.de
 
 #### Vorsicht: Es folgen Spoiler!
 
-Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelnen Klasse, während alle anderen nicht berücksichtigt werden), kann man mit dem kleinen Button "Reset NN" in der oberen rechten Ecke die Gewichte wieder auf zufällige Werte im anfangs definierten Bereich setzen. So muss man nicht sämtliche Daten von Neuem generieren, falls man sich in einem lokalen Minimum "verfängt". Wie mir beim Schreiben dieses Textes auffällt, hätte ich hier eventuell ein Menü einbauen sollen, sodass man auch die anderen festen Parameter des Netzes verändern und sofort ein neues Netz generieren kann (was aber dem widersprochen hätte, dass ich eventuell weitere optionale Inputs später hinzufügen wollte, die die Daten dann ohnehin unbrauchbar hätten werden lassen).
+Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelnen Klasse, während alle anderen nicht berücksichtigt werden), kann man mit dem kleinen Button "Reset NN" in der oberen rechten Ecke die Gewichte wieder auf zufällige Werte im anfangs definierten Bereich setzen. So muss man nicht sämtliche Daten von Neuem generieren, falls man sich in einem lokalen Minimum "verfängt". Wie mir beim Schreiben dieses Textes auffällt, hätte ich hier eventuell ein Menü einbauen sollen, sodass man auch die anderen festen Parameter des Netzes verändern und sofort ein neues Netz generieren kann (was aber dem widersprochen hätte, dass ich eventuell weitere optionale Inputs später hinzufügen wollte, die die Daten dann ohnehin unbrauchbar gemacht hätten).
 
 ##### Tricks:
 - Anzahl verdeckter Neuronen klein halten für schnelleres Training (dafür evtl. begrenztes Modell?)
