@@ -34,7 +34,7 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 
 ---
 
-##### Beweise, dass es möglich ist, und andere Videos/Bilder:
+#### Beweise, dass es möglich ist, und andere Videos/Bilder:
 - [Spiel gewonnen!](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/SuccessVideo.mp4)
 - [Rechtsverkehr gelehrt](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/Right-hand%20driving.mp4)
 - [Menü-Durchlauf und Pendeln](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/WalkthroughVideoWithPendulum.mp4)
@@ -42,6 +42,6 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 
 ---
 
-##### Eventuell bei Zeiten noch implementieren:
+#### Eventuell bei Zeiten noch implementieren:
 - weitere optionale Inputs (oder!)
 - "Reset NN" führt zum Menü zur Erstellung des Neuronalen Netzes ohne Verlust der Daten
