@@ -147,9 +147,10 @@ MonoBehaviour:
   outputNeurons: 2
   randomizeMin: -1
   randomizeMax: 1
-  learningRate: 0.9
+  learningRate: 0.02
   epochs: 10
   batchsize: 1
+  batchIndex: 0
   difficulty: 0.5
 --- !u!4 &21298224
 Transform:
@@ -1064,7 +1065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.32498, y: -138.5}
+  m_AnchoredPosition: {x: 0.32498, y: -109.19}
   m_SizeDelta: {x: 506.85, y: 66.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &306951393
@@ -1441,7 +1442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &506402849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1507,7 +1508,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.9
+  m_Value: 0.02
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3186,8 +3187,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Anschlie\xDFend kann man mit den Daten eines Durchlaufs beliebig viele
-    Epochen trainieren oder neue Daten sammeln."
+  m_Text: "Anschlie\xDFend kann man mit den Daten auf diverse Weisen trainieren oder
+    jederzeit neue Daten sammeln."
 --- !u!222 &1106949574
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3302,8 +3303,8 @@ RectTransform:
   m_Father: {fileID: 1668066111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3968,7 +3969,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1139250689}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -4456,7 +4457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1527940135
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5859,7 +5860,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6264,7 +6265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2108536144
 RectTransform:
   m_ObjectHideFlags: 0

@@ -15,11 +15,16 @@ public class NeuralNetwork : MonoBehaviour
     public Matrix biasHidden;
     public Matrix biasOutput;
 
+    private Matrix BatchDeltaWeightsInputHidden;
+    private Matrix BatchDeltaWeightsHiddenOutput;
+    private Matrix BatchDeltaBiasHidden;
+    private Matrix BatchDeltaBiasOutput;
+
     [Range(0,1)]
-    public float learningRate = 0.9f;
+    public float learningRate = 0.02f;
     public int epochs = 10;
     public int batchsize = 1;
-
+    public int batchIndex = 0;
     [Range(0, 1)]
     public float difficulty = 0.5f;
 
@@ -50,6 +55,16 @@ public class NeuralNetwork : MonoBehaviour
         weightsHiddenOutput.Randomize(randomizeMin, randomizeMax);
         biasHidden.Randomize(randomizeMin, randomizeMax);
         biasOutput.Randomize(randomizeMin, randomizeMax);
+
+        BatchDeltaWeightsInputHidden = new Matrix(inputNeurons, hiddenNeurons);
+        BatchDeltaWeightsHiddenOutput = new Matrix(hiddenNeurons, outputNeurons);
+        BatchDeltaBiasHidden = new Matrix(1, hiddenNeurons);
+        BatchDeltaBiasOutput = new Matrix(1, outputNeurons);
+
+        BatchDeltaWeightsInputHidden.SetToZero();
+        BatchDeltaWeightsHiddenOutput.SetToZero();
+        BatchDeltaBiasHidden.SetToZero();
+        BatchDeltaBiasOutput.SetToZero();
     }
 
     public Matrix Feedforward(Matrix input)
@@ -93,6 +108,28 @@ public class NeuralNetwork : MonoBehaviour
         Matrix output = Matrix.Addition(Matrix.MatrixMultiplication(hidden, weightsHiddenOutput), biasOutput);
         output.UseActivationFunction();
 
+        /*
+        // Threshold function to stop when close enough (0.8 and 0.2)
+        if (output[0, 0] >= 0.8f)
+        {
+            output[0, 0] = 1.0f;
+        }
+        else if (output[0, 0] <= 0.2f)
+        {
+            output[0, 0] = 0.0f;
+        }
+
+        if (output[0, 1] >= 0.8f)
+        {
+            output[0, 1] = 1.0f;
+        }
+        else if (output[0, 1] <= 0.2f)
+        {
+            output[0, 1] = 0.0f;
+        }
+        */
+        
+
         // use formulas from University Regensburg Backpropagation!
         Matrix temp1 = output.Copy();
         Matrix temp2 = output.Copy();
@@ -111,18 +148,19 @@ public class NeuralNetwork : MonoBehaviour
         BigDeltaHiddenOutput.ScalarMultiplication(learningRate);
         BigDeltaInputHidden.ScalarMultiplication(learningRate);
 
-        weightsHiddenOutput = Matrix.Addition(weightsHiddenOutput, BigDeltaHiddenOutput);
-        weightsInputHidden = Matrix.Addition(weightsInputHidden, BigDeltaInputHidden);
+        BatchDeltaWeightsHiddenOutput.AdditionInPlace(BigDeltaHiddenOutput);
+        BatchDeltaWeightsInputHidden.AdditionInPlace(BigDeltaInputHidden);
 
         // bias is like neuron with constant output 1; apply the same formulas
         Matrix temp5 = deltaOutput.Copy();
         temp5.ScalarMultiplication(learningRate);
         Matrix temp6 = deltaHidden.Copy();
         temp6.ScalarMultiplication(learningRate);
-        biasOutput = Matrix.Addition(biasOutput, temp5);
-        biasHidden = Matrix.Addition(biasHidden, temp6);
 
-        // return Error: 0.5*sum(t-o) which is not really the Errorfunction, because weights are already updated in between!
+        BatchDeltaBiasOutput.AdditionInPlace(temp5);
+        BatchDeltaBiasHidden.AdditionInPlace(temp6);
+
+        // return Error: sum(t-o) which is not really the Errorfunction, because weights are already updated in between! (depends on Batchsize)
         float error = 0;
         for(int i = 0; i < temp1.Cols; i++)
         {
@@ -131,6 +169,36 @@ public class NeuralNetwork : MonoBehaviour
         // input.Print();
         // target.Print();
         // Debug.Log(error);
+
+        batchIndex++;
+        if (batchIndex == batchsize)
+        {
+            UpdateWeightsAndBiases();
+            batchIndex = 0;
+        }
+
         return error; // should be in [0,2]
+    }
+
+    public void UpdateWeightsAndBiases()
+    {
+        weightsHiddenOutput.AdditionInPlace(BatchDeltaWeightsHiddenOutput);
+        weightsInputHidden.AdditionInPlace(BatchDeltaWeightsInputHidden);
+
+        biasOutput.AdditionInPlace(BatchDeltaBiasOutput);
+        biasHidden.AdditionInPlace(BatchDeltaBiasHidden);
+
+        BatchDeltaWeightsInputHidden.SetToZero();
+        BatchDeltaWeightsHiddenOutput.SetToZero();
+        BatchDeltaBiasHidden.SetToZero();
+        BatchDeltaBiasOutput.SetToZero();
+    }
+
+    public void ResetNetwork()
+    {
+        weightsInputHidden.Randomize(randomizeMin, randomizeMax);
+        weightsHiddenOutput.Randomize(randomizeMin, randomizeMax);
+        biasHidden.Randomize(randomizeMin, randomizeMax);
+        biasOutput.Randomize(randomizeMin, randomizeMax);
     }
 }

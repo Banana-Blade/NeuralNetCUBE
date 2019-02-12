@@ -29,6 +29,17 @@ public class Matrix
         }
     }
 
+    public void SetToZero()
+    {
+        for (int i = 0; i < this.Rows; i++)
+        {
+            for (int j = 0; j < this.Cols; j++)
+            {
+                _matrix[i, j] = 0f;
+            }
+        }
+    }
+
     public static Matrix Transpose(Matrix m)
     {
         Matrix resultMatrix = new Matrix(m.Cols, m.Rows);
@@ -82,6 +93,24 @@ public class Matrix
             }
         }
         return resultMatrix;
+    }
+
+    public void AdditionInPlace(Matrix other)
+    {
+        if ((this.Cols != other.Cols) || (this.Rows != other.Rows))
+        {
+            Debug.LogError("Matrixaddition " + this + " plus " + other + " not possible!");
+            return;
+        }
+
+        for (int i = 0; i < this.Rows; i++)
+        {
+            for (int j = 0; j < this.Cols; j++)
+            {
+                _matrix[i, j] += other[i, j];
+            }
+        }
+        return;
     }
 
     public void ScalarMultiplication(float factor)

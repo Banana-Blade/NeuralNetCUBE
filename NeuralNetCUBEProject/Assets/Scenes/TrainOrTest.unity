@@ -1186,18 +1186,20 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 87dc483b2c9f9a440b0c964ff7019de0, type: 3}
-    m_FontSize: 20
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TRAINIEREN !
+  m_Text: 'DATEN SAMMELN
+
+    UND TRAINIEREN !'
 --- !u!222 &1952901527
 CanvasRenderer:
   m_ObjectHideFlags: 0
