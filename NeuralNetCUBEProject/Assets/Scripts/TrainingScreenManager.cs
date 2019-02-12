@@ -26,6 +26,7 @@ public class TrainingScreenManager : MonoBehaviour
     public Button doneButton;
     public Text loadingBarText;
     public Button resetButton;
+    public GameObject CorrectClassifiedPerClassTextDisplay;
 
     public Data data;
     public NeuralNetwork NN;
@@ -37,8 +38,8 @@ public class TrainingScreenManager : MonoBehaviour
         NN = FindObjectOfType<NeuralNetwork>();
         dataCount.text = data.list.Count.ToString();
         batchSlider.maxValue = data.list.Count;
-        batchSlider.value = batchSlider.maxValue;
-        NN.batchsize = (int)batchSlider.maxValue;
+        batchSlider.value = Mathf.CeilToInt(batchSlider.maxValue * 0.05f);
+        NN.batchsize = (int)batchSlider.value;
         BatchCount.text = batchSlider.value.ToString();
         NN.epochs = (int)epochSlider.value;
         NN.learningRate = learningRateSlider.value;
@@ -136,6 +137,7 @@ public class TrainingScreenManager : MonoBehaviour
         }
 
         correctClassifiedTextDisplay.GetComponent<Text>().text = "wird berechnet...";
+        CorrectClassifiedPerClassTextDisplay.SetActive(false);
         yield return null;
 
         int correct = 0;
@@ -172,6 +174,8 @@ public class TrainingScreenManager : MonoBehaviour
         NN.biasHidden.Print();
         NN.biasOutput.Print();
         correctClassifiedTextDisplay.GetComponent<Text>().text = correctPercentage.ToString("#0.0#####", System.Globalization.CultureInfo.InvariantCulture) + "%";
+        CorrectClassifiedPerClassTextDisplay.SetActive(true);
+        CorrectClassifiedPerClassTextDisplay.GetComponent<Text>().text = "( " + ((correctPerClass[0] * 100f) / data.list.Count).ToString("#0.0", System.Globalization.CultureInfo.InvariantCulture) + "% + " + ((correctPerClass[1] * 100f) / data.list.Count).ToString("#0.0", System.Globalization.CultureInfo.InvariantCulture) + "% + " + ((correctPerClass[2] * 100f) / data.list.Count).ToString("#0.0", System.Globalization.CultureInfo.InvariantCulture) + "% + " + ((correctPerClass[3] * 100f) / data.list.Count).ToString("#0.0", System.Globalization.CultureInfo.InvariantCulture) + "% )";
         yield return null;
 
         EnableInteractions();
