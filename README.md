@@ -1,5 +1,5 @@
 # NeuralNetCUBE
-TLDR: [Ausprobieren und selbst spielen](http://www-stud.uni-due.de/~scjokepp/NeuralNetCUBE/) oder [Anschauen, dass es möglich ist](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/SuccessVideo.mp4)
+TLDR: [Ausprobieren und selbst spielen!](http://www-stud.uni-due.de/~scjokepp/NeuralNetCUBE/) oder [Anschauen, dass es möglich ist!](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/SuccessVideo.mp4)
 ---
 ### Projekt für das Modul "Neuronale Netze" im WS18/19 geschrieben in C# mit Unity.
 
