@@ -33,7 +33,8 @@ public class NNMovement : MonoBehaviour
         // Debug.Log(player.position.x);
         // Debug.Log(MapTo01(player.position.x, -8.5f, 8.5f));
         // measureValues[0, 0] = MapTo01(player.position.x, -7.5f, 7.5f); // changed!
-        measureValues[0, 0] = MapWithSigmoid(0.5f, player.position.x);
+        measureValues[0, 0] = MapTo01(player.position.x, -8f, 8f); // changed! -7.5f, 7.5f?!
+        // measureValues[0, 0] = MapWithSigmoid(0.5f, player.position.x);
 
         // Velocity Left Right in [-25,25] -> map to [0,1]
         // Debug.Log(rb.velocity.x);
