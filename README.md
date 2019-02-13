@@ -1,5 +1,5 @@
 # NeuralNetCUBE
-TLDR: [Ausprobieren und selbst spielen!](http://www-stud.uni-due.de/~scjokepp/NeuralNetCUBE/) oder [Anschauen, dass es möglich ist!](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/SuccessVideo.mp4)
+TLDR: [Ausprobieren und selbst spielen!](http://www-stud.uni-due.de/~scjokepp/NeuralNetCUBE/) oder [Anschauen, dass es möglich ist!](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/SuccessVideo.mp4) oder [Vollständiger und erfolgreicher Durchlauf durch das Programm.](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/CompleteWalkthrough.mp4)
 ---
 ### Projekt für das Modul "Neuronale Netze" im WS18/19 geschrieben in C# mit Unity.
 
@@ -37,6 +37,7 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 
 #### Beweise, dass es möglich ist, und andere Videos/Bilder:
 - [Spiel gewonnen!](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/SuccessVideo.mp4)
+- [Vollständiger und erfolgreicher Durchlauf durch das Programm](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/CompleteWalkthrough.mp4)
 - [Rechtsverkehr gelehrt](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/Right-hand%20driving.mp4)
 - [Menü-Durchlauf und Pendeln](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/WalkthroughVideoWithPendulum.mp4)
 - [Heureka - Screenshot der Unity Umgebung, als mein Netz anfing, vernünftig zu lernen](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/ScreenshotUnity.jpg)
@@ -47,5 +48,5 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 #### Eventuell bei Zeiten noch implementieren bzw. erledigen:
 - weitere optionale Inputs (oder!)
 - "Reset NN" führt zum Menü zur Erstellung des Neuronalen Netzes ohne Verlust der Daten
-- Position (links/rechts) Input nicht mit sig. mappen?
-- Video von komplettem Ablauf erstellen
+- ~~Position (links/rechts) Input nicht mit sig. sondern wieder linear mappen?~~
+- ~~Video von komplettem Ablauf erstellen~~
