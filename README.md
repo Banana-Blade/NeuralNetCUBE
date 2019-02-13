@@ -31,6 +31,7 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 - Daten äquilibrieren vor dem Training, durch hochschieben von "links" und "rechts" auf Höhe von "kein Button"
 - viele Epochen bei kleiner Batch-Größe (nicht 1) trainieren
 - Lernrate klein starten und sukzessive sogar noch senken
+- je nach Datensätzen (vor allem Anzahl) führen viele Wege zum Ziel und das Obige lässt sich auch leicht verwerfen :D
 
 ---
 
