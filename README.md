@@ -28,7 +28,7 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 ##### Tricks:
 - Anzahl verdeckter Neuronen klein halten für schnelleres Training (dafür evtl. begrenztes Modell?)
 - viele Daten generieren (mind. 3 Durchläufe bis 100% spielen)
-- Daten äquilibrieren vor dem Training, durch hochschieben von "links" und "rechts" auf Höhe von "kein Button"
+- Daten manuell äquilibrieren vor dem Training, durch hochschieben der Slider "links" und "rechts" auf die Höhe des Sliders von "kein Button"; durch "Bestätigen" werden dann zufällige Daten dieser Klassen kopiert, um ein Gleichgewicht (bzw. die so gewählte Verteilung) zu erzeugen
 - viele Epochen bei kleiner Batch-Größe (nicht 1) trainieren
 - Lernrate klein starten und sukzessive sogar noch senken
 - je nach Datensätzen (vor allem Anzahl) führen viele Wege zum Ziel und das Obige lässt sich auch leicht verwerfen :D
