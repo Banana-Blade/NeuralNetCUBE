@@ -39,6 +39,7 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 - [Rechtsverkehr gelehrt](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/Right-hand%20driving.mp4)
 - [Menü-Durchlauf und Pendeln](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/WalkthroughVideoWithPendulum.mp4)
 - [Heureka - Screenshot der Unity Umgebung, als mein Netz anfing, vernünftig zu lernen](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/ScreenshotUnity.jpg)
+- [50% Schwierigkeit - einigermaßen akzeptable Ergebnisse](https://raw.githubusercontent.com/Banana-Blade/NeuralNetCUBE/master/okishPerfomance.mp4) (Strategie beim Lenken: nicht bewegen, wenn nicht notwendig; wenn notwendig, an freie Stelle so nah wie möglich und nur zum Rand wechseln falls notwendig --> Probleme: wenige Daten vom Rand, daher dort unsicheres Verhalten; Mapping am Rand mit sigmoid evtl. zusätzlich nachteilig!)
 
 ---
 
