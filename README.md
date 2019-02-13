@@ -45,3 +45,4 @@ Wenn das Netz nicht zu lernen scheint (gerade bei Overfitting auf einer einzelne
 #### Eventuell bei Zeiten noch implementieren:
 - weitere optionale Inputs (oder!)
 - "Reset NN" führt zum Menü zur Erstellung des Neuronalen Netzes ohne Verlust der Daten
+- Position (links/rechts) Input nicht mit sig. mappen?
