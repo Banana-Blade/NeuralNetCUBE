@@ -26,7 +26,7 @@ public class NeuralNetwork : MonoBehaviour
     public int batchsize = 1;
     public int batchIndex = 0;
     [Range(0, 1)]
-    public float difficulty = 0.5f;
+    public float difficulty = 1f;
 
     // So that there is only one NN in the scene and will never be overwritten!
     public static NeuralNetwork instance;

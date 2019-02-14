@@ -151,7 +151,7 @@ MonoBehaviour:
   epochs: 10
   batchsize: 1
   batchIndex: 0
-  difficulty: 0.5
+  difficulty: 1
 --- !u!4 &21298224
 Transform:
   m_ObjectHideFlags: 0
@@ -1686,7 +1686,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4890,7 +4890,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 50%
+  m_Text: 100%
 --- !u!222 &1642934717
 CanvasRenderer:
   m_ObjectHideFlags: 0

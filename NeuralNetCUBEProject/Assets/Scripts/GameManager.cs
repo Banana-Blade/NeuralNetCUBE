@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     void Start() // initialize all Obstacles randomly with repect to the difficulty
     {
-        float dif = 0.5f;
+        float dif = 1f;
         NeuralNetwork NN = FindObjectOfType<NeuralNetwork>();
         if (NN != null)
         {
